@@ -1,0 +1,43 @@
+
+<html><body>
+  <div id="mapdiv"></div>
+  <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+  <script>
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+
+    var lonLat = new OpenLayers.LonLat( 150.885345 ,-34.411388 )
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+          );
+
+    var lonLat2 = new OpenLayers.LonLat( 150.878675 ,-34.406495 )
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+          );
+     var lonLat3 = new OpenLayers.LonLat( 150.878675 ,-34.416495 )
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+          );
+
+          
+    var zoom=16;
+
+    var markers = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(lonLat));
+    
+    var markers2 = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers2);
+    markers2.addMarker(new OpenLayers.Marker(lonLat2));
+
+    var markers3 = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers3);
+    markers2.addMarker(new OpenLayers.Marker(lonLat3));
+
+    map.setCenter (lonLat, zoom);
+  </script>
+</body></html>
